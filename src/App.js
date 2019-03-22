@@ -1,28 +1,38 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { Layout, Menu } from 'antd';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+const { Header, Content, Footer } = Layout;
+
+function App() {
+  
+  const [currentPage, setCurrentPage] = useState(["app"]);
+
+  return (
+      <div className="app">
+        <Layout className="layout">
+          <Header>
+            <div className="logo" />
+            <Menu
+              theme="dark"
+              mode="horizontal"
+              defaultSelectedKeys={["app"]}
+              selectedKeys={currentPage}
+              style={{ lineHeight: '64px' }}
+            >
+              <Menu.Item key="app" onClick={() => setCurrentPage(["app"])}>App</Menu.Item>
+              <Menu.Item key="user" onClick={() => setCurrentPage(["user"])}>User</Menu.Item>
+            </Menu>
+          </Header>
+          <Content style={{ padding: '0 50px' }}>
+            
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>
+            NPES ©2019 Created by Ashley Koh, Tyler Goh, Jean Soh & Lim Qing Xin
+          </Footer>
+        </Layout>
       </div>
-    );
-  }
+  );
 }
 
 export default App;
