@@ -6,6 +6,7 @@ import Application from './components/application/index';
 import User from './components/user/index';
 
 import initUsers from './components/user/users';
+import initRooms from './components/application/rooms';
 
 const { Header, Content, Footer } = Layout;
 
@@ -13,6 +14,7 @@ function App() {
   
   const [currentPage, setCurrentPage] = useState(["user"]);
   const [users, setUsers] = useState(initUsers);
+  const [rooms, setRooms] = useState(initRooms);
 
   return (
       <div className="app">
@@ -33,7 +35,7 @@ function App() {
             <CurrentPage/>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            NPES ©2019 Created by Ashley Koh, Tyler Goh, Jean Soh & Lim Qing Xin
+            NPES ©2019 Created by Ashley Koh, Tyler Goh, Jean Soh & Lim Qin Xin
           </Footer>
         </Layout>
       </div>
