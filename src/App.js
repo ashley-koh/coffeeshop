@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Select, Row, Col } from 'antd';
 import './App.css';
 
 import Application from './components/application/index';
@@ -9,11 +9,12 @@ import initUsers from './components/user/users';
 import initRooms from './components/application/rooms';
 
 const { Header, Content, Footer } = Layout;
+const Option = Select.Option;
 
 function App() {
   
-  const [currentPage, setCurrentPage] = useState(["app"]);
-  const [currentUser, setCurrentUser] = useState("Tyler Goh")
+  const [currentPage, setCurrentPage] = useState(["user"]);
+  const [currentUser, setCurrentUser] = useState(initUsers[0].name)
   const [users, setUsers] = useState(initUsers);
   const [rooms, setRooms] = useState(initRooms);
 
@@ -21,16 +22,30 @@ function App() {
       <div className="app">
         <Layout className="layout">
           <Header>
-            <div className="logo" />
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              selectedKeys={currentPage}
-              style={{ lineHeight: '64px' }}
-            >
-              <Menu.Item key="app" onClick={() => setCurrentPage(["app"])}>App</Menu.Item>
-              <Menu.Item key="user" onClick={() => setCurrentPage(["user"])}>User</Menu.Item>
-            </Menu>
+            <Row type="flex">
+              <Col span={22}>
+                <div className="logo" />
+                <Menu
+                  theme="dark"
+                  mode="horizontal"
+                  selectedKeys={currentPage}
+                  style={{ lineHeight: '64px' }}
+                >
+                  <Menu.Item key="app" onClick={() => setCurrentPage(["app"])}>App</Menu.Item>
+                  <Menu.Item key="user" onClick={() => setCurrentPage(["user"])}>User</Menu.Item>
+                </Menu>
+              </Col>
+              <Col span={2}>
+                <Select 
+                  defaultValue={users[0].name}
+                  onChange={(e) => setCurrentUser(e.target.value)}
+                >
+                  {users.map((user, index)=> (
+                    <Option key={index} value={user.name}>{user.name}</Option>
+                  ))}
+                </Select>
+              </Col>
+            </Row>
           </Header>
           <Content style={{ backgroundColor: 'white' }}>
             <CurrentPage/>
@@ -57,6 +72,7 @@ function App() {
     />
     }
   }
+
 }
 
 export default App;
