@@ -5,7 +5,27 @@ const initRooms = [
       {
         id: "tyler",
         message: "blah blah blah"
+      },
+      {
+        id: "tyler",
+        message: "blah blah blah"
       }
+      ,
+      {
+        id: "tyler2",
+        message: "blah blah blah"
+      }
+      ,
+      {
+        id: "tyler1",
+        message: "blah blah blah"
+      }
+      ,
+      {
+        id: "tyler2",
+        message: "blah blah blah"
+      }
+      
     ]
     
   },{

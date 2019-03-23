@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Card } from 'antd'
 
 function ChatBox(props) {
-    
+    var scrollingElement = (document.getElementById("scroll")) /* you could provide your scrolling element with react ref */
+    scrollingElement.scrollTop = scrollingElement.scrollHeight;
     for (var key in props.rooms) {
         if (props.currentRoom == props.rooms[key].name)
         var Messages = props.rooms[key].messages;
@@ -15,8 +16,7 @@ function ChatBox(props) {
     );
       
     return (
-        <div className="scrollable-container"  style={{ height: 500 }}>
-
+        <div className="scrollable-container" id="scroll" style={{ height: 500 }}>
         {Text}
     </div>
     )
