@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from 'antd'
 
 function ChatBox(props) {
-    var scrollingElement = (document.getElementById("scroll")) /* you could provide your scrolling element with react ref */
-    scrollingElement.scrollTop = scrollingElement.scrollHeight;
+    useEffect(() => {
+        var scrollingElement = (document.getElementById("scroll")) /* you could provide your scrolling element with react ref */
+        scrollingElement.scrollTop = scrollingElement.scrollHeight;
+      });
+
     for (var key in props.rooms) {
         if (props.currentRoom == props.rooms[key].name)
         var Messages = props.rooms[key].messages;
