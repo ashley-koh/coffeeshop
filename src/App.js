@@ -12,7 +12,7 @@ const { Header, Content, Footer } = Layout;
 
 function App() {
   
-  const [currentPage, setCurrentPage] = useState(["user"]);
+  const [currentPage, setCurrentPage] = useState(["app"]);
   const [users, setUsers] = useState(initUsers);
   const [rooms, setRooms] = useState(initRooms);
 
@@ -31,7 +31,7 @@ function App() {
               <Menu.Item key="user" onClick={() => setCurrentPage(["user"])}>User</Menu.Item>
             </Menu>
           </Header>
-          <Content style={{ padding: '0 50px', backgroundColor: 'white' }}>
+          <Content style={{ backgroundColor: 'white' }}>
             <CurrentPage/>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
@@ -43,7 +43,10 @@ function App() {
 
   function CurrentPage() {
     if (currentPage[0] === "app") {
-      return <Application/>
+      return <Application
+        rooms={rooms}
+        setRooms={setRooms}
+      />
     } else {
       return <User
       users={users}
