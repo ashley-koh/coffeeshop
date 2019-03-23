@@ -13,6 +13,7 @@ const { Header, Content, Footer } = Layout;
 function App() {
   
   const [currentPage, setCurrentPage] = useState(["app"]);
+  const [currentUser, setCurrentUser] = useState("Tyler Goh")
   const [users, setUsers] = useState(initUsers);
   const [rooms, setRooms] = useState(initRooms);
 
@@ -51,6 +52,8 @@ function App() {
       return <User
       users={users}
       setUsers={setUsers}
+      rooms={rooms} 
+      setRooms={setRooms}
     />
     }
   }
