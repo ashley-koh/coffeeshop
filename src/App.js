@@ -47,7 +47,7 @@ function App() {
               </Col>
             </Row>
           </Header>
-          <Content style={{ padding: '0 50px', backgroundColor: 'white' }}>
+          <Content style={{ backgroundColor: 'white' }}>
             <CurrentPage/>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
@@ -59,7 +59,10 @@ function App() {
 
   function CurrentPage() {
     if (currentPage[0] === "app") {
-      return <Application/>
+      return <Application
+        rooms={rooms}
+        setRooms={setRooms}
+      />
     } else {
       return <User
       users={users}
