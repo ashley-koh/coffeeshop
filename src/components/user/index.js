@@ -40,9 +40,18 @@ function User(props) {
             <Button 
               type="primary"
               style={{ marginTop: 10 }}
+              onClick={() => addNewUser()}
             >
               Add New User
             </Button>
+          </Row>
+        </Col>
+      </Row>
+      <Row>
+        <Col span={10}>
+          <Row><h1>Rooms</h1></Row>
+          <Row>
+            
           </Row>
         </Col>
       </Row>
@@ -58,6 +67,7 @@ function User(props) {
         y: yCoor
       }
     })
+    props.setUsers(users);
   }
 
 }
