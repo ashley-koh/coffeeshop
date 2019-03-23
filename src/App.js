@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import './App.css';
+import Game from './components/games/TTT';
 
 import Application from './components/application/index';
 import User from './components/user/index';
@@ -12,7 +13,7 @@ const { Header, Content, Footer } = Layout;
 
 function App() {
   
-  const [currentPage, setCurrentPage] = useState(["user"]);
+  const [currentPage, setCurrentPage] = useState(["app"]);
   const [users, setUsers] = useState(initUsers);
   const [rooms, setRooms] = useState(initRooms);
 
@@ -44,11 +45,13 @@ function App() {
   function CurrentPage() {
     if (currentPage[0] === "app") {
       return <Application/>
-    } else {
+    } else if(currentPage[0] === "user") {
       return <User
       users={users}
       setUsers={setUsers}
-    />
+    /> 
+    } else {
+      <Game/>
     }
   }
 }

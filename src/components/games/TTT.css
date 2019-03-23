@@ -1,0 +1,23 @@
+.Tile {
+    width: 26vw;
+    height: 26vw;
+    font-size: 7em;
+}
+.container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.reset-btn{
+    display: flex;
+    justify-content: center;
+    width: 19vw;
+    height: 7vw;
+    font-size: 2.5em;
+}
+.alert{
+    font-size: 2.5em;
+    display: flex;
+    width: 80vw;
+    justify-content: center;
+}
