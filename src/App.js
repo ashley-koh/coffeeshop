@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import './App.css';
 
+import Application from './components/application/index';
+import User from './components/user/index';
+
+import initUsers from './components/user/users';
+
 const { Header, Content, Footer } = Layout;
 
 function App() {
   
-  const [currentPage, setCurrentPage] = useState(["app"]);
+  const [currentPage, setCurrentPage] = useState(["user"]);
+  const [users, setUsers] = useState(initUsers);
 
   return (
       <div className="app">
@@ -16,7 +22,6 @@ function App() {
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={["app"]}
               selectedKeys={currentPage}
               style={{ lineHeight: '64px' }}
             >
@@ -24,8 +29,8 @@ function App() {
               <Menu.Item key="user" onClick={() => setCurrentPage(["user"])}>User</Menu.Item>
             </Menu>
           </Header>
-          <Content style={{ padding: '0 50px' }}>
-            
+          <Content style={{ padding: '0 50px', backgroundColor: 'white' }}>
+            <CurrentPage/>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             NPES ©2019 Created by Ashley Koh, Tyler Goh, Jean Soh & Lim Qing Xin
@@ -33,6 +38,17 @@ function App() {
         </Layout>
       </div>
   );
+
+  function CurrentPage() {
+    if (currentPage[0] === "app") {
+      return <Application/>
+    } else {
+      return <User
+      users={users}
+      setUsers={setUsers}
+    />
+    }
+  }
 }
 
 export default App;
