@@ -62,6 +62,7 @@ function App() {
       return <Application
         rooms={rooms}
         setRooms={setRooms}
+        currentUser={currentUser}
       />
     } else {
       return <User

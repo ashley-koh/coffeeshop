@@ -10,3 +10,13 @@
   .input-box {
     background-color: #f2f2f2;
   }
+
+  .topic-header {
+    margin-left: 25px;
+    margin-top: 15px;
+  }
+
+  .ant-comment-inner {
+    padding: 0px 0px;
+    padding-top: 16px;
+  }
