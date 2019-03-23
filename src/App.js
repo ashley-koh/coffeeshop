@@ -13,7 +13,7 @@ const Option = Select.Option;
 
 function App() {
   
-  const [currentPage, setCurrentPage] = useState(["user"]);
+  const [currentPage, setCurrentPage] = useState(["app"]);
   const [currentUser, setCurrentUser] = useState(initUsers[0].name)
   const [users, setUsers] = useState(initUsers);
   const [rooms, setRooms] = useState(initRooms);
