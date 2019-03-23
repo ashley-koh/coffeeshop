@@ -109,7 +109,7 @@ function User(props) {
               </Button>
             </Col>
           </Row>
-          <Row style={{ marginTop: 25 }}><h1>Send New Message</h1></Row>
+          <Row style={{ marginTop: 35 }}><h1>Send New Message</h1></Row>
           <Row style={{ marginBottom: 10 }}>Message</Row>
           <Row>
             <Input placeholder="Message" onChange={(e) => setNewMsg(e.target.value)} value={newMsg} />
