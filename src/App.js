@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import './App.css';
 
+import Application from './components/application/index'
+import User from './components/user/index'
+
 const { Header, Content, Footer } = Layout;
 
 function App() {
@@ -25,7 +28,7 @@ function App() {
             </Menu>
           </Header>
           <Content style={{ padding: '0 50px' }}>
-            
+            <CurrentPage/>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             NPES ©2019 Created by Ashley Koh, Tyler Goh, Jean Soh & Lim Qing Xin
@@ -33,6 +36,14 @@ function App() {
         </Layout>
       </div>
   );
+
+  function CurrentPage() {
+    if (currentPage[0] === "app") {
+      return <Application/>
+    } else {
+      return <User/>
+    }
+  }
 }
 
 export default App;
