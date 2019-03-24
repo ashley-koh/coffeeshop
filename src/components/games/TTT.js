@@ -11,7 +11,6 @@ function Game() {
     ])
     const [TF, setTF] = useState([false,false,false,false,false,false,false,false,false])
     const [turn, setTurn] = useState('X')
-    const [playerID, setPlayerID] = useState('X')
     
     function resetBoard() {
         setGameBoard([
@@ -56,7 +55,6 @@ function Game() {
     )}
 
     function onClick(turn, index){
-        if (playerID === turn){
             let board = gameBoard;
             board[index] = turn;
             setGameBoard(board);
@@ -66,10 +64,7 @@ function Game() {
             if (turn==='X')setTurn('O');
             else setTurn('X')
             checkBoard();
-        }
-        else {
-            message.warning("Wait for your turn", 2);
-        }
+        
     }
 
     return (
