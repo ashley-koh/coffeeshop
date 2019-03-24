@@ -100,6 +100,7 @@ function ChatBox(props) {
             autoSize={{ rows: 4 }} 
             onChange={(e) => setMessage(e.target.value)}
             value={message}
+            onPressEnter={() => sendMsg()}
           />
         </Col>
         <Col span={2}>

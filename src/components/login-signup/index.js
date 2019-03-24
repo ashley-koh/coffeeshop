@@ -24,9 +24,9 @@ function LoginSignUp(props) {
             </Col>
           </Row>
           <Row style={{ margin: '10px 0' }}>Username</Row>
-          <Row><Input style={{ width: '70%' }} size="large" onChange={(e) => setUsername(e.target.value)} placeholder="Username"/></Row>
+          <Row><Input style={{ width: '70%' }} size="large" onChange={(e) => setUsername(e.target.value)} onPressEnter={() => register()} placeholder="Username"/></Row>
           <Row style={{ margin: '10px 0' }}>Password</Row>
-          <Row><Input style={{ width: '70%' }} type="password" size="large" onChange={(e) => setPassword(e.target.value)} placeholder="Password"/></Row>
+          <Row><Input style={{ width: '70%' }} type="password" size="large" onPressEnter={() => register()} onChange={(e) => setPassword(e.target.value)} placeholder="Password"/></Row>
           <Row style={{ margin: "25px 0" }}>
             <Button onClick={() => register()} size="large" type="primary">Enter</Button>
           </Row>
