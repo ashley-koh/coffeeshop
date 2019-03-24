@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Avatar, Card, Button } from 'antd'
+import axios from 'axios';
 
 const { Meta } = Card;
 
@@ -15,11 +16,17 @@ function RecommendedUser(props) {
         <Meta
           style={{ textAlign: 'center' }}
           title="hello"
-          description={(<Button type="primary">Connect</Button>)}
+          description={(<Button onClick={() => connect()} type="primary">Connect</Button>)}
         />
       </Card>
     </div>
   )
+
+  function connect() {
+    axios.get('https://128.199.88.168:80/friend')
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  }
 
 }
 
