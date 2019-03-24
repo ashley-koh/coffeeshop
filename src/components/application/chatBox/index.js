@@ -39,7 +39,7 @@ function ChatBox(props) {
           author={<a href="#" onClick={() => setModalVisibility(msg.id)}>{msg.id}</a>}
           avatar={(
             <Avatar
-              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+              src={`https://api.adorable.io/avatars/180/${msg.id}@adorable.io.png`}
               alt="Han Solo"
             />
           )}
@@ -73,6 +73,7 @@ function ChatBox(props) {
               placeholder="Enter Text" 
               autoSize={{ rows: 4 }} 
               onChange={(e) => setMessage(e.target.value)}
+              value={message}
             />
         </Col>
         <Col span={2}>
@@ -97,21 +98,40 @@ function ChatBox(props) {
       message: message,
       room: props.currentRoom,
     }
-    console.log(data)
 
     axios.post('http://128.199.88.168/sendmessage', data)
       .then(res => {
-        console.log(res.data);
-        let rooms = props.rooms;
-        let roomnames = props.rooms.map(room => { return room.name });
-        console.log(roomnames)
-        let index = roomnames.indexOf(res.data.room);
-        console.log(res.data.room)
-        rooms[index].messages.push({
-          id: res.data.id,
-          message: res.data.message
-        });
-        props.setRooms(rooms);
+        // let rooms = props.rooms;
+        // let roomnames = props.rooms.map(room => { return room.name });
+        // let index = roomnames.indexOf(data.room);
+        // console.log(res.data)
+        // rooms[index].messages.push({
+        //   id: data.id,
+        //   message: data.message
+        // });
+        // props.setRooms(rooms);
+        axios.post('http://128.199.88.168:80/requestmessage', {
+          id: props.currentUser,
+          room: props.currentRoom
+        })
+          .then(res => {
+            let rooms = props.rooms;
+            let messages = res.data;
+            let roomnames = props.rooms.map(room => { return room.name })
+            let index = roomnames.indexOf(data.room);
+            
+
+            for (let i in messages) {
+              rooms[index].messages.push(messages[i])
+              console.log(messages[i])
+            }
+
+            props.setRooms(rooms);
+            setMessage();
+          })
+          .catch(err => console.log(err))
+          
+          
       })
       .catch(err => console.log(err))
   }
