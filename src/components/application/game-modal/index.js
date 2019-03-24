@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
 import '../index.css';
-import Game from '../../games/SPS.js'
+import Game from '../../games/TTT.js'
 
 function GameModal(props) {
 

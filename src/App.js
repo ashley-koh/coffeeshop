@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Layout, Menu, Select, Row, Col } from 'antd';
 import './App.css';
-import Game from './components/games/TTT';
 
 import Application from './components/application/index';
 import User from './components/user/index';
+import LoginSignUp from './components/login-signup/index'
 
 import initUsers from './components/user/users';
 import initRooms from './components/application/rooms';
@@ -14,6 +14,7 @@ const Option = Select.Option;
 
 function App() {
   
+  const [userSignedIn, setUserSignedIn] = useState(false);
   const [currentPage, setCurrentPage] = useState(["app"]);
   const [currentUser, setCurrentUser] = useState(initUsers[0].name)
   const [users, setUsers] = useState(initUsers);
@@ -60,22 +61,23 @@ function App() {
 
   function CurrentPage() {
     if (currentPage[0] === "app") {
-      
-      return <Application
-        rooms={rooms}
-        setRooms={setRooms}
-        currentUser={currentUser}
-      />
-    } else if (currentPage[0] === "user") {
+      if (userSignedIn) {
+        return <Application
+          rooms={rooms}
+          setRooms={setRooms}
+          currentUser={currentUser}
+        />
+      } else {
+        return <LoginSignUp setUserSignedIn={setUserSignedIn} />
+      }
+    } else {
       return <User
       users={users}
       setUsers={setUsers}
       rooms={rooms} 
       setRooms={setRooms}
     />
-    } else {
-      return <Game/>
-    }
+    } 
   }
 
 }

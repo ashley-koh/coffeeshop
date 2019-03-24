@@ -16,7 +16,15 @@
     margin-top: 15px;
   }
 
+  .ant-card-body {
+    padding: 10px;
+  }
+
   .ant-comment-inner {
     padding: 0px 0px;
     padding-top: 16px;
+  }
+
+  .ant-comment-avatar {
+    margin-top: 4px;
   }
