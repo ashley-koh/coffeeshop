@@ -49,7 +49,7 @@ function LoginSignUp(props) {
       .then(res => {
         console.log(res)
         props.setUserSignedIn(true);
-
+        props.setCurrentUser(username);
       })
       .catch(err => console.log(err))
   }
