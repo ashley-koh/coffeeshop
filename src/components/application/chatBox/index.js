@@ -3,6 +3,7 @@ import { Card, Row, Col, Input, Button, Comment, Avatar } from 'antd'
 import axios from 'axios';
 
 import GameModal from '../game-modal/index';
+import useInterval from './useInterval';
 
 const { TextArea } = Input;
 
@@ -11,9 +12,35 @@ function ChatBox(props) {
   const [modalVisibility, setModalVisibility] = useState(false);
   const [message, setMessage] = useState();
 
+  useInterval(() => {
+    // Your custom logic here
+    axios.post('http://128.199.88.168:80/requestmessage', {
+      id: props.currentUser,
+      room: props.currentRoom
+    })
+      .then(res => {
+        let rooms = props.rooms;
+          let messages = res.data;
+          let roomnames = props.rooms.map(room => { return room.name })
+          let index = roomnames.indexOf(props.currentRoom);
+          
+          console.log(res.data)
+
+          for (let i in messages) {
+            rooms[index].messages.push(messages[i])
+            console.log(messages[i])
+          }
+
+          props.setRooms(rooms);
+          setMessage();
+      }).catch(err => console.log(err))
+  }, 5000);
+
   useEffect(() => {
     var scrollingElement = (document.getElementById("scroll")) /* you could provide your scrolling element with react ref */
     scrollingElement.scrollTop = scrollingElement.scrollHeight;
+
+
   });
 
   for (var key in props.rooms) {
@@ -68,13 +95,13 @@ function ChatBox(props) {
       </Row>
       <Row style={{ backgroundColor: 'white', borderLeft: '1px solid #e8e8e8' }}>
         <Col span={18} offset={2}>
-            <Input 
-              style={{ margin: 10, height: 45, borderRadius: 100 }} 
-              placeholder="Enter Text" 
-              autoSize={{ rows: 4 }} 
-              onChange={(e) => setMessage(e.target.value)}
-              value={message}
-            />
+          <Input 
+            style={{ margin: 10, height: 45, borderRadius: 100 }} 
+            placeholder="Enter Text" 
+            autoSize={{ rows: 4 }} 
+            onChange={(e) => setMessage(e.target.value)}
+            value={message}
+          />
         </Col>
         <Col span={2}>
           <Button 

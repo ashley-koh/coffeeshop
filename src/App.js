@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Menu, Select, Row, Col } from 'antd';
+import axios from 'axios';
 import './App.css';
 
 import Application from './components/application/index';
@@ -16,9 +17,11 @@ function App() {
   
   const [userSignedIn, setUserSignedIn] = useState(false);
   const [currentPage, setCurrentPage] = useState(["app"]);
-  const [currentUser, setCurrentUser] = useState(initUsers[0].name)
+  const [currentUser, setCurrentUser] = useState()
   const [users, setUsers] = useState(initUsers);
   const [rooms, setRooms] = useState(initRooms);
+
+  
 
   return (
       <div className="app">
@@ -68,7 +71,7 @@ function App() {
           currentUser={currentUser}
         />
       } else {
-        return <LoginSignUp setUserSignedIn={setUserSignedIn} />
+        return <LoginSignUp setUserSignedIn={setUserSignedIn} setCurrentUser={setCurrentUser}/>
       }
     } else {
       return <User

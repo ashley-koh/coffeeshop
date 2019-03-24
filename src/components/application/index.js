@@ -4,11 +4,14 @@ import './index.css';
 
 import ChatBox from './chatBox/index';
 import RecommendedUsers from './recommended-users/index';
-import CreateRoom from './create-room/index'
+import CreateRoom from './create-room/index';
+
 
 function Application(props) {
   const [currentRoom, setRoom] = useState("General");
   const [creatingNewRoom, setCreatingNewRoom] = useState(false);
+
+  
 
   const Options = props.rooms.map((room) =>
     <Menu.Item key={room.name}>
