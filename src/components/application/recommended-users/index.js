@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Avatar, Card, Button } from 'antd'
+import { Avatar, Card, Button, message } from 'antd'
 import axios from 'axios';
 
 const { Meta } = Card;
@@ -23,8 +23,10 @@ function RecommendedUser(props) {
   )
 
   function connect() {
-    axios.get('https://128.199.88.168:80/friend')
-      .then(res => console.log(res))
+    axios.get('http://128.199.88.168:80/friend')
+      .then(res => {
+        message.info(res.data)
+      })
       .catch(err => console.log(err))
   }
 
