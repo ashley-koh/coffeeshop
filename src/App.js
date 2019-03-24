@@ -80,7 +80,7 @@ function App() {
       rooms={rooms} 
       setRooms={setRooms}
     />
-    }
+    } 
   }
 
 }
