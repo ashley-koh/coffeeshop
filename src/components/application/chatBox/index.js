@@ -32,7 +32,6 @@ function ChatBox(props) {
           }
 
           props.setRooms(rooms);
-          setMessage();
       }).catch(err => console.log(err))
   }, 5000);
 
